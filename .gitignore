@@ -1,0 +1,9 @@
+obj/
+bin/
+.vscode/
+.idea/
+
+public/
+src/
+
+.DS_Store
