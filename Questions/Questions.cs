@@ -41,7 +41,7 @@ public class Questions
   public static string AskForProjectDescription()
   {
     Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine("What is the description of the project?");
+    Console.WriteLine("Describe your project in a sentence or two.");
     Console.ResetColor();
     string answer = Console.ReadLine() ?? string.Empty;
 
@@ -59,10 +59,18 @@ public class Questions
   public static string AskForProjectKeywords()
   {
     Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine("What are the keywords of the project?");
+    Console.WriteLine("What keywords best describe your project?");
     Console.WriteLine("Separate keywords with commas, no spaces");
     Console.ResetColor();
     string answer = Console.ReadLine() ?? string.Empty;
+
+    if (answer.Contains(" "))
+    {
+      Console.ForegroundColor = ConsoleColor.Red;
+      Console.WriteLine("Keywords cannot contain spaces.");
+      Console.ResetColor();
+      return AskForProjectKeywords();
+    }
 
     if (string.IsNullOrEmpty(answer))
     {
@@ -89,6 +97,15 @@ public class Questions
       Console.ResetColor();
       return AskForAdditionalPackages();
     }
+
+    if (answer != "y" && answer != "n")
+    {
+      Console.ForegroundColor = ConsoleColor.Red;
+      Console.WriteLine("Invalid answer.");
+      Console.ResetColor();
+      return AskForAdditionalPackages();
+    }
+
     return answer;
   }
 
@@ -103,6 +120,14 @@ public class Questions
     {
       Console.ForegroundColor = ConsoleColor.Red;
       Console.WriteLine("Answer cannot be empty.");
+      Console.ResetColor();
+      return AskWhatPackagesToAdd();
+    }
+
+    if (answer.Contains(" "))
+    {
+      Console.ForegroundColor = ConsoleColor.Red;
+      Console.WriteLine("Package names cannot contain spaces.");
       Console.ResetColor();
       return AskWhatPackagesToAdd();
     }

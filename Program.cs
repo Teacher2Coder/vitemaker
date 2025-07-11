@@ -58,6 +58,9 @@ SrcSubFileGenerators.CreateAppCss(pathToStyles);
 SrcSubFileGenerators.CreateHandleSmoothScrollJs(pathToUtils);
 
 // Run console commands
-Npm.InitProject(pathToProject, inputs);
 Installs.InstallDefaultPackages(pathToProject);
-Installs.InstallUserPackages(pathToProject);
+Installs.InstallUserPackages(pathToProject, inputs);
+
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("Project created successfully!");
+Console.ResetColor();
