@@ -60,7 +60,7 @@ public class Questions
   {
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("What are the keywords of the project?");
-    Console.WriteLine("Separate keywords with commas");
+    Console.WriteLine("Separate keywords with commas, no spaces");
     Console.ResetColor();
     string answer = Console.ReadLine() ?? string.Empty;
 
@@ -92,7 +92,7 @@ public class Questions
     return answer;
   }
 
-  public static string AskWhatPackageToAdd()
+  public static string AskWhatPackagesToAdd()
   {
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("What package do you want to add?");
@@ -104,7 +104,7 @@ public class Questions
       Console.ForegroundColor = ConsoleColor.Red;
       Console.WriteLine("Answer cannot be empty.");
       Console.ResetColor();
-      return AskWhatPackageToAdd();
+      return AskWhatPackagesToAdd();
     }
 
     return answer;

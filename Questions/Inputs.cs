@@ -9,11 +9,11 @@ public sealed class Inputs
   private string? projectDescription;
   private string? projectKeywords;
   private string? additionalPackages;
-  private ICollection<string> packageToAdd;
+  private ICollection<string> packagesToAdd;
 
   public Inputs()
   {
-    packageToAdd = new List<string>();
+    packagesToAdd = new List<string>();
   }
 
   public string ProjectName
@@ -46,9 +46,9 @@ public sealed class Inputs
     set { additionalPackages = value; }
   }
 
-  public ICollection<string> PackageToAdd
+  public ICollection<string> PackagesToAdd
   {
-    get { return packageToAdd; }
-    set { packageToAdd = value; }
+    get { return packagesToAdd; }
+    set { packagesToAdd = value; }
   }
 }

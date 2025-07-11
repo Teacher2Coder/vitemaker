@@ -1,5 +1,6 @@
 ﻿using vitemaker.Questions;
 using vitemaker.Generators;
+using vitemaker.Commands;
 
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("-------------------------------");
@@ -17,29 +18,46 @@ inputs.AdditionalPackages = Questions.AskForAdditionalPackages();
 
 while (inputs.AdditionalPackages == "y")
 {
-  inputs.PackageToAdd.Add(Questions.AskWhatPackageToAdd());
+  inputs.PackagesToAdd.Add(Questions.AskWhatPackagesToAdd());
   inputs.AdditionalPackages = Questions.AskForAdditionalPackages();
 }
 
 var pathToProject = $"{inputs.ProjectName}";
 var pathToPublic = $"{pathToProject}/public";
 var pathToSrc = $"{pathToProject}/src";
+var pathToComponents = $"{pathToSrc}/components";
+var pathToPages = $"{pathToSrc}/pages";
+var pathToStyles = $"{pathToSrc}/styles";
+var pathToUtils = $"{pathToSrc}/utils";
 
 FolderGenerators.CreateFolders(pathToProject);
 
 // Create files in project folder
+RootFileGenerators.CreatePackageJson(pathToProject, inputs);
 RootFileGenerators.CreateViteConfig(pathToProject);
+RootFileGenerators.CreateTailwindConfig(pathToProject);
+RootFileGenerators.CreatePostcssConfig(pathToProject);
 RootFileGenerators.CreateIndexHtml(pathToProject, inputs);
-// Need eslint.config.js and .gitignore, 
+RootFileGenerators.CreateEslintConfigJs(pathToProject);
+RootFileGenerators.CreateGitignore(pathToProject);
 
 // Create files in public folder
-RootFileGenerators.CreateLogo(pathToPublic);
+PublicFileGenerators.CreateLogo(pathToPublic);
+PublicFileGenerators.CreateRedirects(pathToPublic);
 
 // Create files in src folder
-// Need main.jsx, App.jsx
+SrcFileGenerators.CreateMainJsx(pathToSrc);
+SrcFileGenerators.CreateAppJsx(pathToSrc);
 
 //Create files in src subfolders
-// Need navbar and footer in components
-// Need home and error in pages
-// Need app.css in styles
-// Need handleSmoothScroll.js in utils
+SrcSubFileGenerators.CreateNavbarJsx(pathToComponents, inputs);
+SrcSubFileGenerators.CreateFooterJsx(pathToComponents, inputs);
+SrcSubFileGenerators.CreateHomeJsx(pathToPages, inputs);
+SrcSubFileGenerators.CreateErrorJsx(pathToPages);
+SrcSubFileGenerators.CreateAppCss(pathToStyles);
+SrcSubFileGenerators.CreateHandleSmoothScrollJs(pathToUtils);
+
+// Run console commands
+Npm.InitProject(pathToProject, inputs);
+Installs.InstallDefaultPackages(pathToProject);
+Installs.InstallUserPackages(pathToProject);

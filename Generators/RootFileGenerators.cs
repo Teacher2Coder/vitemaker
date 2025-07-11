@@ -6,16 +6,78 @@ using vitemaker.Questions;
 namespace vitemaker.Generators;
 
 public class RootFileGenerators
-{  
-  public static void CreateLogo(string path)
+{
+  public static void CreatePackageJson(string path, Inputs inputs)
   {
-    string svgContent = @"<svg xmlns=""http://www.w3.org/2000/svg"" xmlns:xlink=""http://www.w3.org/1999/xlink"" width=""500"" zoomAndPan=""magnify"" viewBox=""0 0 375 374.999991"" height=""500"" preserveAspectRatio=""xMidYMid meet"" version=""1.0""><defs><g/><clipPath id=""607396cad4""><path d=""M 111 124 L 337.5 124 L 337.5 335.25 L 111 335.25 Z M 111 124 "" clip-rule=""nonzero""/></clipPath><clipPath id=""0a85f07307""><path d=""M 37.5 66 L 208 66 L 208 199 L 37.5 199 Z M 37.5 66 "" clip-rule=""nonzero""/></clipPath><clipPath id=""b6b9758b9b""><path d=""M 37.5 37.5 L 208 37.5 L 208 59 L 37.5 59 Z M 37.5 37.5 "" clip-rule=""nonzero""/></clipPath></defs><g clip-path=""url(#607396cad4)""><path fill=""#ffffff"" d=""M 322.46875 124.15625 L 219.203125 124.15625 L 219.203125 140.914062 L 320.746094 140.914062 L 320.746094 268.226562 L 128.039062 268.226562 L 128.039062 209.71875 L 111.28125 209.71875 L 111.28125 269.941406 C 111.28125 273.050781 112.226562 275.945312 113.851562 278.347656 C 115.203125 280.347656 117.027344 282.007812 119.148438 283.171875 C 121.28125 284.324219 123.722656 284.984375 126.308594 284.984375 L 216.835938 284.984375 L 216.835938 305.355469 C 205.519531 306.0625 195.734375 308.324219 189.339844 311.488281 C 184.359375 313.953125 181.4375 316.964844 181.4375 320.21875 C 181.4375 328.546875 200.664062 335.308594 224.390625 335.308594 C 248.113281 335.308594 267.34375 328.546875 267.34375 320.21875 C 267.34375 316.035156 262.503906 312.253906 254.695312 309.519531 C 248.625 307.398438 240.742188 305.910156 231.941406 305.355469 L 231.941406 284.984375 L 322.46875 284.984375 C 327.644531 284.984375 332.222656 282.347656 334.921875 278.347656 C 336.550781 275.945312 337.496094 273.050781 337.496094 269.941406 L 337.496094 139.179688 C 337.496094 130.90625 330.75 124.15625 322.46875 124.15625 "" fill-opacity=""1"" fill-rule=""nonzero""/></g><path fill=""#ffffff"" d=""M 102.832031 110.367188 L 65.523438 131.90625 C 65.222656 132.085938 65.222656 132.527344 65.523438 132.703125 L 102.832031 154.246094 C 103.140625 154.425781 103.523438 154.199219 103.523438 153.847656 L 103.523438 143.664062 C 103.523438 143.492188 103.441406 143.34375 103.292969 143.257812 L 85.015625 132.703125 C 84.707031 132.527344 84.707031 132.085938 85.015625 131.90625 L 103.292969 121.355469 C 103.441406 121.265625 103.523438 121.113281 103.523438 120.949219 L 103.523438 110.765625 C 103.523438 110.414062 103.140625 110.1875 102.832031 110.367188 "" fill-opacity=""1"" fill-rule=""nonzero""/><path fill=""#ffffff"" d=""M 142.382812 154.246094 L 179.691406 132.703125 C 180 132.527344 180 132.085938 179.691406 131.90625 L 142.382812 110.367188 C 142.074219 110.1875 141.691406 110.414062 141.691406 110.765625 L 141.691406 120.949219 C 141.691406 121.113281 141.78125 121.265625 141.917969 121.355469 L 160.207031 131.90625 C 160.515625 132.085938 160.515625 132.527344 160.207031 132.703125 L 141.917969 143.257812 C 141.78125 143.34375 141.691406 143.492188 141.691406 143.664062 L 141.691406 153.847656 C 141.691406 154.199219 142.074219 154.425781 142.382812 154.246094 "" fill-opacity=""1"" fill-rule=""nonzero""/><path fill=""#ffffff"" d=""M 138.542969 102.253906 L 129.007812 102.011719 L 106.671875 162.355469 L 116.148438 162.773438 L 138.542969 102.253906 "" fill-opacity=""1"" fill-rule=""nonzero""/><g clip-path=""url(#0a85f07307)""><path fill=""#ffffff"" d=""M 50.472656 79.527344 L 194.738281 79.527344 L 194.738281 185.257812 L 50.472656 185.257812 Z M 128.039062 198.234375 L 207.714844 198.234375 L 207.714844 66.558594 L 37.503906 66.558594 L 37.503906 198.234375 L 128.039062 198.234375 "" fill-opacity=""1"" fill-rule=""nonzero""/></g><g clip-path=""url(#b6b9758b9b)""><path fill=""#ffffff"" d=""M 182.15625 52.460938 C 179.773438 52.460938 177.84375 50.523438 177.84375 48.140625 C 177.84375 45.765625 179.773438 43.828125 182.15625 43.828125 C 184.539062 43.828125 186.46875 45.765625 186.46875 48.140625 C 186.46875 50.523438 184.539062 52.460938 182.15625 52.460938 Z M 164.972656 52.460938 C 162.597656 52.460938 160.664062 50.523438 160.664062 48.140625 C 160.664062 45.765625 162.597656 43.828125 164.972656 43.828125 C 167.359375 43.828125 169.285156 45.765625 169.285156 48.140625 C 169.285156 50.523438 167.359375 52.460938 164.972656 52.460938 Z M 147.800781 52.460938 C 145.417969 52.460938 143.488281 50.523438 143.488281 48.140625 C 143.488281 45.765625 145.417969 43.828125 147.800781 43.828125 C 150.183594 43.828125 152.113281 45.765625 152.113281 48.140625 C 152.113281 50.523438 150.183594 52.460938 147.800781 52.460938 Z M 131.675781 52.183594 L 62.789062 52.183594 C 60.558594 52.183594 58.753906 50.378906 58.753906 48.140625 C 58.753906 45.910156 60.558594 44.105469 62.789062 44.105469 L 131.675781 44.105469 C 133.90625 44.105469 135.710938 45.910156 135.710938 48.140625 C 135.710938 50.378906 133.90625 52.183594 131.675781 52.183594 Z M 186.425781 37.5 L 58.796875 37.5 C 47.03125 37.5 37.503906 47.035156 37.503906 58.789062 L 207.714844 58.789062 C 207.714844 47.035156 198.179688 37.5 186.425781 37.5 "" fill-opacity=""1"" fill-rule=""nonzero""/></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(171.104693, 223.211373)""><g><path d=""M 19.125 0 L 1.625 0 L 1.625 -14.546875 L 18.328125 -14.546875 L 18.328125 -10.9375 L 7.71875 -10.9375 L 7.71875 -8.65625 L 16.6875 -8.65625 L 16.6875 -5.859375 L 7.71875 -5.859375 L 7.71875 -3.59375 L 19.125 -3.59375 Z M 19.125 0 ""/></g></g></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(191.029617, 223.211373)""><g><path d=""M 12.40625 0 L 6.296875 0 L 6.296875 -10.9375 L 0.609375 -10.9375 L 0.609375 -14.546875 L 18.09375 -14.546875 L 18.09375 -10.9375 L 12.40625 -10.9375 Z M 12.40625 0 ""/></g></g></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(209.719357, 223.211373)""><g><path d=""M 21.484375 0 L 15.375 0 L 15.375 -5.859375 L 7.71875 -5.859375 L 7.71875 0 L 1.625 0 L 1.625 -14.546875 L 7.71875 -14.546875 L 7.71875 -8.65625 L 15.375 -8.65625 L 15.375 -14.546875 L 21.484375 -14.546875 Z M 21.484375 0 ""/></g></g></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(232.80311, 223.211373)""><g><path d=""M 24.421875 0 L 18.234375 0 L 16.875 -2.375 L 7.703125 -2.375 L 6.328125 0 L 0.15625 0 L 9.453125 -14.53125 L 15.109375 -14.53125 Z M 14.8125 -5.984375 L 12.296875 -10.390625 L 9.75 -5.984375 Z M 14.8125 -5.984375 ""/></g></g></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(257.354909, 223.211373)""><g><path d=""M 23.1875 0 L 15.9375 0 L 7.71875 -9.84375 L 7.71875 0 L 1.625 0 L 1.625 -14.546875 L 8.875 -14.546875 L 17.09375 -4.75 L 17.09375 -14.546875 L 23.1875 -14.546875 Z M 23.1875 0 ""/></g></g></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(167.870536, 252.228114)""><g><path d=""M 11 0.3125 C 7.40625 0.3125 4.757812 -0.425781 3.0625 -1.90625 C 1.5625 -3.21875 0.8125 -5.003906 0.8125 -7.265625 C 0.8125 -9.523438 1.5625 -11.304688 3.0625 -12.609375 C 4.757812 -14.085938 7.40625 -14.828125 11 -14.828125 C 14.59375 -14.828125 17.234375 -14.085938 18.921875 -12.609375 C 20.421875 -11.304688 21.171875 -9.523438 21.171875 -7.265625 C 21.171875 -5.003906 20.421875 -3.21875 18.921875 -1.90625 C 17.234375 -0.425781 14.59375 0.3125 11 0.3125 Z M 11 -3.59375 C 12.46875 -3.59375 13.546875 -4.015625 14.234375 -4.859375 C 14.785156 -5.535156 15.0625 -6.335938 15.0625 -7.265625 C 15.0625 -8.191406 14.785156 -8.992188 14.234375 -9.671875 C 13.546875 -10.515625 12.46875 -10.9375 11 -10.9375 C 9.519531 -10.9375 8.429688 -10.515625 7.734375 -9.671875 C 7.179688 -8.992188 6.90625 -8.191406 6.90625 -7.265625 C 6.90625 -6.335938 7.179688 -5.535156 7.734375 -4.859375 C 8.429688 -4.015625 9.519531 -3.59375 11 -3.59375 Z M 11 -3.59375 ""/></g></g></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(189.840599, 252.228114)""><g><path d=""M 24.484375 0 L 19.40625 0 L 15.8125 -9.4375 L 12.234375 0 L 7.140625 0 L 0.15625 -14.53125 L 6.328125 -14.53125 L 9.984375 -5.296875 L 13.890625 -14.53125 L 17.734375 -14.53125 L 21.65625 -5.296875 L 25.296875 -14.53125 L 31.484375 -14.53125 Z M 24.484375 0 ""/></g></g></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(221.44914, 252.228114)""><g><path d=""M 19.125 0 L 1.625 0 L 1.625 -14.546875 L 18.328125 -14.546875 L 18.328125 -10.9375 L 7.71875 -10.9375 L 7.71875 -8.65625 L 16.6875 -8.65625 L 16.6875 -5.859375 L 7.71875 -5.859375 L 7.71875 -3.59375 L 19.125 -3.59375 Z M 19.125 0 ""/></g></g></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(241.374064, 252.228114)""><g><path d=""M 23.1875 0 L 15.9375 0 L 7.71875 -9.84375 L 7.71875 0 L 1.625 0 L 1.625 -14.546875 L 8.875 -14.546875 L 17.09375 -4.75 L 17.09375 -14.546875 L 23.1875 -14.546875 Z M 23.1875 0 ""/></g></g></g><g fill=""#ffffff"" fill-opacity=""1""><g transform=""translate(266.168849, 252.228114)""><g><path d=""M 9.609375 0.3125 C 7.640625 0.3125 6.050781 0.101562 4.84375 -0.3125 C 3.644531 -0.738281 2.734375 -1.320312 2.109375 -2.0625 C 1.484375 -2.800781 1.0625 -3.65625 0.84375 -4.625 L 7.3125 -4.625 C 7.789062 -3.9375 8.554688 -3.59375 9.609375 -3.59375 C 10.648438 -3.59375 11.410156 -3.9375 11.890625 -4.625 C 11.929688 -4.6875 11.953125 -4.742188 11.953125 -4.796875 C 11.953125 -4.984375 11.707031 -5.117188 11.21875 -5.203125 C 10.738281 -5.296875 10.019531 -5.367188 9.0625 -5.421875 C 7.851562 -5.472656 6.585938 -5.601562 5.265625 -5.8125 C 2.296875 -6.269531 0.8125 -7.457031 0.8125 -9.375 C 0.8125 -9.539062 0.820312 -9.71875 0.84375 -9.90625 C 1.0625 -10.863281 1.484375 -11.710938 2.109375 -12.453125 C 2.734375 -13.191406 3.644531 -13.769531 4.84375 -14.1875 C 6.050781 -14.613281 7.640625 -14.828125 9.609375 -14.828125 C 11.566406 -14.828125 13.144531 -14.613281 14.34375 -14.1875 C 15.550781 -13.769531 16.46875 -13.191406 17.09375 -12.453125 C 17.726562 -11.710938 18.15625 -10.863281 18.375 -9.90625 L 11.890625 -9.90625 C 11.410156 -10.59375 10.648438 -10.9375 9.609375 -10.9375 C 8.554688 -10.9375 7.789062 -10.59375 7.3125 -9.90625 C 7.28125 -9.84375 7.265625 -9.789062 7.265625 -9.75 C 7.265625 -9.582031 7.492188 -9.457031 7.953125 -9.375 C 8.421875 -9.300781 9.101562 -9.238281 10 -9.1875 C 10.90625 -9.132812 11.867188 -9.046875 12.890625 -8.921875 C 13.910156 -8.804688 14.863281 -8.597656 15.75 -8.296875 C 16.632812 -7.992188 17.328125 -7.546875 17.828125 -6.953125 C 18.222656 -6.503906 18.421875 -5.929688 18.421875 -5.234375 C 18.421875 -5.035156 18.40625 -4.832031 18.375 -4.625 C 18.15625 -3.65625 17.726562 -2.800781 17.09375 -2.0625 C 16.46875 -1.320312 15.550781 -0.738281 14.34375 -0.3125 C 13.144531 0.101562 11.566406 0.3125 9.609375 0.3125 Z M 9.609375 0.3125 ""/></g></g></g></svg>";
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating package.json");
+    
+    StringBuilder packageJson = new StringBuilder();
+    
+    packageJson.AppendLine("{");
+    packageJson.AppendLine($"  \"name\": \"{inputs.ProjectName.ToLower()}\",");
+    packageJson.AppendLine("  \"version\": \"1.0.0\",");
+    packageJson.AppendLine($"  \"description\": \"{inputs.ProjectDescription}\",");
+    packageJson.AppendLine("  \"keywords\": [");
+    string[] keywords = inputs.ProjectKeywords.Split(',');
+    for (int i = 0; i < keywords.Length; i++)
+    {
+      string keyword = keywords[i].Trim();
+      if (i == keywords.Length - 1)
+      {
+        packageJson.AppendLine($"    \"{keyword}\"");
+      }
+      else
+      {
+        packageJson.AppendLine($"    \"{keyword}\",");
+      }
+    }
+    packageJson.AppendLine("  ],");
+    packageJson.AppendLine("  \"license\": \"MIT\",");
+    packageJson.AppendLine($"  \"author\": \"{inputs.ProjectAuthor}\",");
+    packageJson.AppendLine("  \"type\": \"commonjs\",");
+    packageJson.AppendLine("  \"main\": \"main.jsx\",");
+    packageJson.AppendLine("  \"scripts\": {");
+    packageJson.AppendLine("    \"dev\": \"vite\",");
+    packageJson.AppendLine("    \"build\": \"vite build\",");
+    packageJson.AppendLine("    \"lint\": \"eslint .\",");
+    packageJson.AppendLine("    \"preview\": \"vite preview\"");
+    packageJson.AppendLine("  },");
+    packageJson.AppendLine("  \"dependencies\": {");
+    packageJson.AppendLine("    \"axios\": \"^1.10.0\",");
+    packageJson.AppendLine("    \"framer-motion\": \"^12.18.1\",");
+    packageJson.AppendLine("    \"lucide-react\": \"^0.515.0\",");
+    packageJson.AppendLine("    \"react\": \"^19.1.0\",");
+    packageJson.AppendLine("    \"react-dom\": \"^19.1.0\",");
+    packageJson.AppendLine("    \"react-router-dom\": \"^7.6.2\"");
+    packageJson.AppendLine("  },");
+    packageJson.AppendLine("  \"devDependencies\": {");
+    packageJson.AppendLine("    \"@eslint/js\": \"^9.25.0\",");
+    packageJson.AppendLine("    \"@types/react\": \"^19.1.2\",");
+    packageJson.AppendLine("    \"@types/react-dom\": \"^19.1.2\",");
+    packageJson.AppendLine("    \"@vitejs/plugin-react\": \"^4.4.1\",");
+    packageJson.AppendLine("    \"autoprefixer\": \"^10.4.21\",");
+    packageJson.AppendLine("    \"eslint\": \"^9.25.0\",");
+    packageJson.AppendLine("    \"eslint-plugin-react-hooks\": \"^5.2.0\",");
+    packageJson.AppendLine("    \"eslint-plugin-react-refresh\": \"^0.4.19\",");
+    packageJson.AppendLine("    \"globals\": \"^16.0.0\",");
+    packageJson.AppendLine("    \"postcss\": \"^8.5.6\",");
+    packageJson.AppendLine("    \"tailwindcss\": \"^3.4.17\",");
+    packageJson.AppendLine("    \"vite\": \"^6.3.5\"");
+    packageJson.AppendLine("  }");
+    packageJson.AppendLine("}");
 
-    File.WriteAllText(Path.Combine(path, "logo.svg"), svgContent);
+    File.WriteAllText(Path.Combine(path, "package.json"), packageJson.ToString());
+
+    Console.WriteLine("package.json created");
+    Console.ResetColor();
   }
 
   public static void CreateViteConfig(string path)
   {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating vite.config.js");
+    
     StringBuilder viteConfig = new StringBuilder();
 
     viteConfig.AppendLine("import { defineConfig } from 'vite'");
@@ -31,10 +93,120 @@ public class RootFileGenerators
 
 
     File.WriteAllText(Path.Combine(path, "vite.config.js"), viteConfig.ToString());
+
+    Console.WriteLine("vite.config.js created");
+    Console.ResetColor();
+  }
+
+  public static void CreateTailwindConfig(string path)
+  {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating tailwind.config.js");
+    
+    StringBuilder tailwindConfig = new StringBuilder();
+    
+    tailwindConfig.AppendLine("/** @type {import('tailwindcss').Config} */");
+    tailwindConfig.AppendLine("export default {");
+    tailwindConfig.AppendLine("  content: [");
+    tailwindConfig.AppendLine("    \"./index.html\",");
+    tailwindConfig.AppendLine("    \"./src/**/*.{js,ts,jsx,tsx}\",");
+    tailwindConfig.AppendLine("  ],");
+    tailwindConfig.AppendLine("  theme: {");
+    tailwindConfig.AppendLine("    extend: {");
+    tailwindConfig.AppendLine("      fontFamily: {");
+    tailwindConfig.AppendLine("        'sans': ['Inter', 'system-ui', 'sans-serif'],");
+    tailwindConfig.AppendLine("      },");
+    tailwindConfig.AppendLine("      colors: {");
+    tailwindConfig.AppendLine("        primary: {");
+    tailwindConfig.AppendLine("          50: '#f0f4ff',");
+    tailwindConfig.AppendLine("          100: '#e0ebff',");
+    tailwindConfig.AppendLine("          200: '#c7d8ff',");
+    tailwindConfig.AppendLine("          300: '#a3bdff',");
+    tailwindConfig.AppendLine("          400: '#7a94ff',");
+    tailwindConfig.AppendLine("          500: '#4169e1',");
+    tailwindConfig.AppendLine("          600: '#3d5fcc',");
+    tailwindConfig.AppendLine("          700: '#3651b8',");
+    tailwindConfig.AppendLine("          800: '#2f44a3',");
+    tailwindConfig.AppendLine("          900: '#283a8f',");
+    tailwindConfig.AppendLine("        },");
+    tailwindConfig.AppendLine("        accent: {");
+    tailwindConfig.AppendLine("          50: '#f8f9fa',");
+    tailwindConfig.AppendLine("          100: '#f1f3f4',");
+    tailwindConfig.AppendLine("          200: '#e8eaed',");
+    tailwindConfig.AppendLine("          300: '#dadce0',");
+    tailwindConfig.AppendLine("          400: '#c0c0c0',");
+    tailwindConfig.AppendLine("          500: '#9aa0a6',");
+    tailwindConfig.AppendLine("          600: '#80868b',");
+    tailwindConfig.AppendLine("          700: '#5f6368',");
+    tailwindConfig.AppendLine("          800: '#3c4043',");
+    tailwindConfig.AppendLine("          900: '#202124',");
+    tailwindConfig.AppendLine("        }");
+    tailwindConfig.AppendLine("      },");
+    tailwindConfig.AppendLine("      animation: {");
+    tailwindConfig.AppendLine("        'fade-in': 'fadeIn 0.5s ease-in-out',");
+    tailwindConfig.AppendLine("        'fade-in-up': 'fadeInUp 0.6s ease-out',");
+    tailwindConfig.AppendLine("        'float': 'float 6s ease-in-out infinite',");
+    tailwindConfig.AppendLine("        'gradient': 'gradient 15s ease infinite',");
+    tailwindConfig.AppendLine("      },");
+    tailwindConfig.AppendLine("      keyframes: {");
+    tailwindConfig.AppendLine("        fadeIn: {");
+    tailwindConfig.AppendLine("          '0%': { opacity: '0' },");
+    tailwindConfig.AppendLine("          '100%': { opacity: '1' },");
+    tailwindConfig.AppendLine("        },");
+    tailwindConfig.AppendLine("        fadeInUp: {");
+    tailwindConfig.AppendLine("          '0%': { opacity: '0', transform: 'translateY(20px)' },");
+    tailwindConfig.AppendLine("          '100%': { opacity: '1', transform: 'translateY(0)' },");
+    tailwindConfig.AppendLine("        },");
+    tailwindConfig.AppendLine("        float: {");
+    tailwindConfig.AppendLine("          '0%, 100%': { transform: 'translateY(0px)' },");
+    tailwindConfig.AppendLine("          '50%': { transform: 'translateY(-20px)' },");
+    tailwindConfig.AppendLine("        },");
+    tailwindConfig.AppendLine("        gradient: {");
+    tailwindConfig.AppendLine("          '0%, 100%': {");
+    tailwindConfig.AppendLine("            'background-size': '200% 200%',");
+    tailwindConfig.AppendLine("            'background-position': 'left center'");
+    tailwindConfig.AppendLine("          },");
+    tailwindConfig.AppendLine("          '50%': {");
+    tailwindConfig.AppendLine("            'background-size': '200% 200%',");
+    tailwindConfig.AppendLine("            'background-position': 'right center'");
+    tailwindConfig.AppendLine("          },");
+    tailwindConfig.AppendLine("        },");
+    tailwindConfig.AppendLine("      },");
+    tailwindConfig.AppendLine("    },");
+    tailwindConfig.AppendLine("  },");
+    tailwindConfig.AppendLine("} ");
+    
+    File.WriteAllText(Path.Combine(path, "tailwind.config.js"), tailwindConfig.ToString());
+  
+    Console.WriteLine("tailwind.config.js created");
+    Console.ResetColor();
+  }
+
+  public static void CreatePostcssConfig(string path)
+  {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating postcss.config.js");
+    
+    StringBuilder postcssConfig = new StringBuilder();
+    
+    postcssConfig.AppendLine("module.exports = {");
+    postcssConfig.AppendLine("  plugins: {");
+    postcssConfig.AppendLine("    tailwindcss: {},");
+    postcssConfig.AppendLine("    autoprefixer: {},");
+    postcssConfig.AppendLine("  },");
+    postcssConfig.AppendLine("};");
+
+    File.WriteAllText(Path.Combine(path, "postcss.config.js"), postcssConfig.ToString());
+
+    Console.WriteLine("postcss.config.js created");
+    Console.ResetColor();
   }
 
   public static void CreateIndexHtml(string path, Inputs inputs)
   {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating index.html");
+    
     StringBuilder indexHtml = new StringBuilder();
 
     indexHtml.AppendLine("<!DOCTYPE html>");
@@ -65,5 +237,88 @@ public class RootFileGenerators
     indexHtml.AppendLine("</html>");
 
     File.WriteAllText(Path.Combine(path, "index.html"), indexHtml.ToString());
+
+    Console.WriteLine("index.html created");
+    Console.ResetColor();
+  }
+
+  public static void CreateEslintConfigJs(string path)
+  {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating eslint.config.js");
+    
+    StringBuilder eslintConfigJs = new StringBuilder();
+
+    eslintConfigJs.AppendLine("module.exports = {");
+    eslintConfigJs.AppendLine("  extends: [");
+    eslintConfigJs.AppendLine("    'eslint:recommended',");
+    eslintConfigJs.AppendLine("    'plugin:react/recommended',");
+    eslintConfigJs.AppendLine("    'plugin:react/jsx-runtime',");
+    eslintConfigJs.AppendLine("    'plugin:react-hooks/recommended',");
+    eslintConfigJs.AppendLine("  ],");
+    eslintConfigJs.AppendLine("  parserOptions: {");
+    eslintConfigJs.AppendLine("    ecmaVersion: 'latest',");
+    eslintConfigJs.AppendLine("    sourceType: 'module',");
+    eslintConfigJs.AppendLine("  },");
+    eslintConfigJs.AppendLine("  settings: {");
+    eslintConfigJs.AppendLine("    react: { version: '18.2 }");
+    eslintConfigJs.AppendLine("  },");
+    eslintConfigJs.AppendLine("  plugins: [");
+    eslintConfigJs.AppendLine("    'react',");
+    eslintConfigJs.AppendLine("    'react-hooks',");
+    eslintConfigJs.AppendLine("    'react-hooks',");
+    eslintConfigJs.AppendLine("  ],");
+    eslintConfigJs.AppendLine("  rules: {");
+    eslintConfigJs.AppendLine("    'react-refresh/only-export-components': 'warn',");
+    eslintConfigJs.AppendLine("    'react/prop-types': 'off',");
+    eslintConfigJs.AppendLine("  },");
+    eslintConfigJs.AppendLine("};");
+
+    File.WriteAllText(Path.Combine(path, "eslint.config.js"), eslintConfigJs.ToString());
+
+    Console.WriteLine("eslint.config.js created");
+    Console.ResetColor();
+  }
+
+  public static void CreateGitignore(string path)
+  {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating .gitignore");
+    
+    StringBuilder gitignore = new StringBuilder();
+
+    gitignore.AppendLine("# Logs");
+    gitignore.AppendLine("logs");
+    gitignore.AppendLine("*.log");
+    gitignore.AppendLine("npm-debug.log*");
+    gitignore.AppendLine("yarn-debug.log*");
+    gitignore.AppendLine("yarn-error.log*");
+    gitignore.AppendLine("pnpm-debug.log*");
+    gitignore.AppendLine("lerna-debug.log*");
+    gitignore.AppendLine();
+    gitignore.AppendLine("# Dependencies");
+    gitignore.AppendLine("node_modules");
+    gitignore.AppendLine("package-lock.json");
+    gitignore.AppendLine("dist");
+    gitignore.AppendLine("dist-ssr");
+    gitignore.AppendLine("*.local");
+    gitignore.AppendLine(".env");
+    gitignore.AppendLine();
+    gitignore.AppendLine("# IDEs");
+    gitignore.AppendLine(".vscode");
+    gitignore.AppendLine(".vscode/extensions.json");
+    gitignore.AppendLine(".idea");
+    gitignore.AppendLine(".cursorrules");
+    gitignore.AppendLine(".cursor");
+    gitignore.AppendLine("*.suo");
+    gitignore.AppendLine("*.ntvs*");
+    gitignore.AppendLine("*.njsprod");
+    gitignore.AppendLine("*.sln");
+    gitignore.AppendLine("*.sw?");
+
+    File.WriteAllText(Path.Combine(path, ".gitignore"), gitignore.ToString());
+
+    Console.WriteLine(".gitignore created");
+    Console.ResetColor();
   }
 }

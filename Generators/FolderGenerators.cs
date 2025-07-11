@@ -7,8 +7,14 @@ public class FolderGenerators
 {
   public static void CreateFolders(string path)
   {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating folders...");
+    
     CreatePublicFolder(path);
     CreateSrcFolder(path);
+
+    Console.WriteLine("Folders created!");
+    Console.ResetColor();
   }
 
   public static void CreatePublicFolder(string path)
