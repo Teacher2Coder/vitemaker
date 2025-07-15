@@ -55,11 +55,16 @@ SrcSubFileGenerators.CreateFooterJsx(pathToComponents, inputs);
 SrcSubFileGenerators.CreateHomeJsx(pathToPages, inputs);
 SrcSubFileGenerators.CreateErrorJsx(pathToPages);
 SrcSubFileGenerators.CreateAppCss(pathToStyles);
+SrcSubFileGenerators.CreateNavbarCss(pathToStyles);
 SrcSubFileGenerators.CreateHandleSmoothScrollJs(pathToUtils);
 
 // Run console commands
 Installs.InstallDefaultPackages(pathToProject);
-Installs.InstallUserPackages(pathToProject, inputs);
+Console.WriteLine(inputs.PackagesToAdd.Count);
+if (inputs.PackagesToAdd.Count > 0)
+{
+  Installs.InstallUserPackages(pathToProject, inputs);
+}
 
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Project created successfully!");

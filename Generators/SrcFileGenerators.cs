@@ -49,12 +49,13 @@ public class SrcFileGenerators
     appJsx.AppendLine();
     appJsx.AppendLine("const App = () => {");
     appJsx.AppendLine("  const location = useLocation();");
+    appJsx.AppendLine();
     appJsx.AppendLine("  return (");
     appJsx.AppendLine("    <div className='app'>");
     appJsx.AppendLine("      <Navbar />");
     appJsx.AppendLine("      <main className='app pt-20'>");
     appJsx.AppendLine("        <AnimatePresence mode='wait'>");
-    appJsx.AppendLine("            <Routes location={location} key={location.pathname}>");
+    appJsx.AppendLine("          <Routes location={location} key={location.pathname}>");
     appJsx.AppendLine("            <Route path='/' element={<Home />} />");
     appJsx.AppendLine("            <Route path='*' element={<Error />} />");
     appJsx.AppendLine("          </Routes>");

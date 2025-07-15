@@ -36,14 +36,14 @@ const containerVariants = {
         animate="visible"
         className="text-4xl font-bold gradient-text text-center"
       >
-        Welcome to the Home Page for Example App
+        Welcome to the Home Page for example-app
       </motion.h1>
       <motion.img
         variants={itemVarients}
         initial="hidden"
         animate="visible"
         src="/logo.svg"
-        alt="Example App"
+        alt="example-app"
         className="w-1/2 mx-auto"
       />
     </motion.div>

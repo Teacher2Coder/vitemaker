@@ -261,7 +261,7 @@ public class RootFileGenerators
     eslintConfigJs.AppendLine("    sourceType: 'module',");
     eslintConfigJs.AppendLine("  },");
     eslintConfigJs.AppendLine("  settings: {");
-    eslintConfigJs.AppendLine("    react: { version: '18.2 }");
+    eslintConfigJs.AppendLine("    react: { version: '18.2' }");
     eslintConfigJs.AppendLine("  },");
     eslintConfigJs.AppendLine("  plugins: [");
     eslintConfigJs.AppendLine("    'react',");

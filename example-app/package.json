@@ -1,14 +1,14 @@
 {
-  "name": "example app",
+  "name": "example-app",
   "version": "1.0.0",
-  "description": "It does cool things!",
+  "description": "It does things",
   "keywords": [
     "stuff",
     "things",
     "whatnot"
   ],
   "license": "MIT",
-  "author": "ME",
+  "author": "Me",
   "type": "commonjs",
   "main": "main.jsx",
   "scripts": {

@@ -10,7 +10,7 @@ module.exports = {
     sourceType: 'module',
   },
   settings: {
-    react: { version: '18.2 }
+    react: { version: '18.2' }
   },
   plugins: [
     'react',

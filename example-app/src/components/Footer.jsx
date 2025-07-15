@@ -8,11 +8,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto container-padding py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center md:text-left">
-            <h3 className="text-lg font-semibold gradient-text mb-4">
-              Example App
+            <h3 className="text-lg font-semibold text-white mb-4">
+              example-app
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-md">
-              Passionate full-stack developer creating innovative solutions with modern technologies.
+              It does things
             </p>
           </div>
 
@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-accent-700">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} Example App. All rights reserved.
+              © {new Date().getFullYear()} example-app. All rights reserved.
             </p>
             <div className="flex items-center space-x-1 text-sm text-gray-600 dark:text-gray-400">
               <span>Built with</span>

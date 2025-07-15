@@ -47,12 +47,12 @@ const Navbar = () => {
             <div className="p-2 bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg transform group-hover:scale-105 transition-transform duration-300">
               <img
                 src="/logo.svg"
-                alt="Example App"
+                alt="example-app"
                 className="w-6 h-6"
               />
             </div>
             <span className="font-bold text-xl gradient-text">
-              Example App
+              example-app
             </span>
           </Link>
 

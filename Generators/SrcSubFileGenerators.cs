@@ -175,11 +175,11 @@ public class SrcSubFileGenerators
     footerJsx.AppendLine("      <div className=\"max-w-7xl mx-auto container-padding py-12\">");
     footerJsx.AppendLine("        <div className=\"grid grid-cols-1 md:grid-cols-3 gap-8\">");
     footerJsx.AppendLine("          <div className=\"text-center md:text-left\">");
-    footerJsx.AppendLine("            <h3 className=\"text-lg font-semibold gradient-text mb-4\">");
+    footerJsx.AppendLine("            <h3 className=\"text-lg font-semibold text-white mb-4\">");
     footerJsx.AppendLine($"              {inputs.ProjectName}");
     footerJsx.AppendLine("            </h3>");
     footerJsx.AppendLine("            <p className=\"text-gray-600 dark:text-gray-400 max-w-md\">");
-    footerJsx.AppendLine("              Passionate full-stack developer creating innovative solutions with modern technologies.");
+    footerJsx.AppendLine($"              {inputs.ProjectDescription}");
     footerJsx.AppendLine("            </p>");
     footerJsx.AppendLine("          </div>");
     footerJsx.AppendLine();
@@ -370,6 +370,23 @@ public class SrcSubFileGenerators
     Console.ResetColor();
   }
 
+  public static void CreateNavbarCss(string path)
+  {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating Navbar.css");
+    
+    StringBuilder navbarCss = new StringBuilder();
+
+    navbarCss.AppendLine(".mobile-menu-item:hover {");
+    navbarCss.AppendLine("  transform: translateX(4px);");
+    navbarCss.AppendLine("}");
+
+    File.WriteAllText(Path.Combine(path, "Navbar.css"), navbarCss.ToString());
+
+    Console.WriteLine("Navbar.css created");
+    Console.ResetColor();
+  }
+  
   public static void CreateHandleSmoothScrollJs(string path)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -378,10 +395,19 @@ public class SrcSubFileGenerators
     StringBuilder handleSmoothScrollJs = new StringBuilder();
     
     handleSmoothScrollJs.AppendLine("export default function handleSmoothScroll() {");
-    handleSmoothScrollJs.AppendLine("  window.scrollTo({");
-    handleSmoothScrollJs.AppendLine("    top: 0,");
-    handleSmoothScrollJs.AppendLine("    behavior: 'smooth',");
-    handleSmoothScrollJs.AppendLine("  });");
+    handleSmoothScrollJs.AppendLine("  setTimeout(() => {");
+    handleSmoothScrollJs.AppendLine("    if (window.scrollTo) {");
+    handleSmoothScrollJs.AppendLine("      window.scrollTo({");
+    handleSmoothScrollJs.AppendLine("        top: 0,");
+    handleSmoothScrollJs.AppendLine("        left: 0,");
+    handleSmoothScrollJs.AppendLine("        behavior: 'smooth',");
+    handleSmoothScrollJs.AppendLine("      });");
+    handleSmoothScrollJs.AppendLine("    } else {");
+    handleSmoothScrollJs.AppendLine("      window.scrollTo(0, 0);");
+    handleSmoothScrollJs.AppendLine("    }");
+    handleSmoothScrollJs.AppendLine("    document.documentElement.scrollTop = 0;");
+    handleSmoothScrollJs.AppendLine("    document.body.scrollTop = 0;");
+    handleSmoothScrollJs.AppendLine("  }, 100);");
     handleSmoothScrollJs.AppendLine("}");
     
     File.WriteAllText(Path.Combine(path, "handleSmoothScroll.js"), handleSmoothScrollJs.ToString());

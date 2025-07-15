@@ -8,12 +8,13 @@ import './styles/app.css';
 
 const App = () => {
   const location = useLocation();
+
   return (
     <div className='app'>
       <Navbar />
       <main className='app pt-20'>
         <AnimatePresence mode='wait'>
-            <Routes location={location} key={location.pathname}>
+          <Routes location={location} key={location.pathname}>
             <Route path='/' element={<Home />} />
             <Route path='*' element={<Error />} />
           </Routes>
