@@ -10,7 +10,7 @@ public class RootFileGenerators
   public static void CreatePackageJson(string path, Inputs inputs)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating package.json");
+    Console.WriteLine("Creating package.json...");
     
     StringBuilder packageJson = new StringBuilder();
     
@@ -69,14 +69,14 @@ public class RootFileGenerators
 
     File.WriteAllText(Path.Combine(path, "package.json"), packageJson.ToString());
 
-    Console.WriteLine("package.json created");
+    Console.WriteLine("package.json created!");
     Console.ResetColor();
   }
 
   public static void CreateViteConfig(string path)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating vite.config.js");
+    Console.WriteLine("Creating vite.config.js...");
     
     StringBuilder viteConfig = new StringBuilder();
 
@@ -94,14 +94,14 @@ public class RootFileGenerators
 
     File.WriteAllText(Path.Combine(path, "vite.config.js"), viteConfig.ToString());
 
-    Console.WriteLine("vite.config.js created");
+    Console.WriteLine("vite.config.js created!");
     Console.ResetColor();
   }
 
   public static void CreateTailwindConfig(string path)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating tailwind.config.js");
+    Console.WriteLine("Creating tailwind.config.js...");
     
     StringBuilder tailwindConfig = new StringBuilder();
     
@@ -178,14 +178,14 @@ public class RootFileGenerators
     
     File.WriteAllText(Path.Combine(path, "tailwind.config.js"), tailwindConfig.ToString());
   
-    Console.WriteLine("tailwind.config.js created");
+    Console.WriteLine("tailwind.config.js created!");
     Console.ResetColor();
   }
 
   public static void CreatePostcssConfig(string path)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating postcss.config.js");
+    Console.WriteLine("Creating postcss.config.js...");
     
     StringBuilder postcssConfig = new StringBuilder();
     
@@ -198,14 +198,14 @@ public class RootFileGenerators
 
     File.WriteAllText(Path.Combine(path, "postcss.config.js"), postcssConfig.ToString());
 
-    Console.WriteLine("postcss.config.js created");
+    Console.WriteLine("postcss.config.js created!");
     Console.ResetColor();
   }
 
   public static void CreateIndexHtml(string path, Inputs inputs)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating index.html");
+    Console.WriteLine("Creating index.html...");
     
     StringBuilder indexHtml = new StringBuilder();
 
@@ -216,18 +216,60 @@ public class RootFileGenerators
     indexHtml.AppendLine("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
     indexHtml.AppendLine($"    <meta name=\"description\" content=\"{inputs.ProjectDescription}\">");
     indexHtml.AppendLine($"    <meta name=\"author\" content=\"{inputs.ProjectAuthor}\">");
+    indexHtml.AppendLine($"    <meta name=\"keywords\" content=\"{inputs.ProjectKeywords}\">");
     indexHtml.AppendLine();
+    indexHtml.AppendLine("    <!-- Open Graph / Facebook -->");
     indexHtml.AppendLine("    <meta property=\"og:type\" content=\"website\">");
     indexHtml.AppendLine("    <meta property=\"og:url\" content=\"\">");
     indexHtml.AppendLine($"    <meta property=\"og:title\" content=\"{inputs.ProjectName}\">");
     indexHtml.AppendLine($"    <meta property=\"og:description\" content=\"{inputs.ProjectDescription}\">");
+    indexHtml.AppendLine("    <meta property=\"og:image\" content=\"\">");
+    indexHtml.AppendLine("    <meta property=\"og:image:alt\" content=\"\">");
+    indexHtml.AppendLine("    <meta property=\"og:image:width\" content=\"1200\">");
+    indexHtml.AppendLine("    <meta property=\"og:image:height\" content=\"630\">");
+    indexHtml.AppendLine("    <meta property=\"og:image:type\" content=\"image/png\">");
+    indexHtml.AppendLine("    <meta property=\"og:locale\" content=\"en_US\">");
+    indexHtml.AppendLine($"    <meta property=\"og:site_name\" content=\"{inputs.ProjectName}\">");
     indexHtml.AppendLine();
+    indexHtml.AppendLine("    <!-- Twitter -->");
     indexHtml.AppendLine("    <meta property=\"twitter:card\" content=\"summary_large_image\">");
     indexHtml.AppendLine("    <meta property=\"twitter:url\" content=\"\">");
     indexHtml.AppendLine($"    <meta property=\"twitter:title\" content=\"{inputs.ProjectName}\">");
     indexHtml.AppendLine($"    <meta property=\"twitter:description\" content=\"{inputs.ProjectDescription}\">");
+    indexHtml.AppendLine("    <meta property=\"twitter:image\" content=\"\">");
+    indexHtml.AppendLine("    <meta property=\"twitter:image:alt\" content=\"\">");
+    indexHtml.AppendLine("    <meta property=\"twitter:image:width\" content=\"1200\">");
+    indexHtml.AppendLine("    <meta property=\"twitter:image:height\" content=\"630\">");
+    indexHtml.AppendLine("    <meta property=\"twitter:image:type\" content=\"image/png\">");
+    indexHtml.AppendLine("    <meta property=\"twitter:locale\" content=\"en_US\">");
+    indexHtml.AppendLine($"    <meta property=\"twitter:site\" content=\"{inputs.ProjectName}\">");
     indexHtml.AppendLine();
+    indexHtml.AppendLine("    <!-- Robots -->");
+    indexHtml.AppendLine("    <meta name=\"robots\" content=\"index, follow\">");
+    indexHtml.AppendLine("    <meta name=\"googlebot\" content=\"index, follow\">");
+    indexHtml.AppendLine("    <meta name=\"bingbot\" content=\"index, follow\">");
+    indexHtml.AppendLine("    <meta name=\"yandexbot\" content=\"index, follow\">");
+    indexHtml.AppendLine("    <meta name=\"sogoubot\" content=\"index, follow\">");  
+    indexHtml.AppendLine("    <meta name=\"360bot\" content=\"index, follow\">");
+    indexHtml.AppendLine("    <meta name=\"shenma\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\">");
+    indexHtml.AppendLine("    <meta name=\"baidubot\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\">");
+    indexHtml.AppendLine("    <meta name=\"duckduckbot\" content=\"index, follow\">");
+    indexHtml.AppendLine();
+    indexHtml.AppendLine("    <!-- Favicon -->");
     indexHtml.AppendLine("    <link rel=\"icon\" type=\"image\" href=\"/logo.svg\">");
+    indexHtml.AppendLine("    <link rel=\"apple-touch-icon\" href=\"/logo.svg\">");
+    indexHtml.AppendLine("    <link rel=\"icon\" type=\"image/x-icon\" href=\"/logo.svg\">");
+    indexHtml.AppendLine();
+    indexHtml.AppendLine("    <!-- Schema.org -->");
+    indexHtml.AppendLine("    <script type=\"application/ld+json\">");
+    indexHtml.AppendLine("      {");
+    indexHtml.AppendLine("        \"@context\": \"https://schema.org\",");
+    indexHtml.AppendLine("        \"@type\": \"WebSite\",");
+    indexHtml.AppendLine($"        \"name\": \"{inputs.ProjectName}\",");
+    indexHtml.AppendLine($"        \"url\": \"https://{inputs.ProjectName}.com\"");
+    indexHtml.AppendLine("      }");
+    indexHtml.AppendLine("    </script>");
+    indexHtml.AppendLine();
     indexHtml.AppendLine($"    <title>{inputs.ProjectName}</title>");
     indexHtml.AppendLine("  </head>");
     indexHtml.AppendLine("  <body>");
@@ -238,14 +280,14 @@ public class RootFileGenerators
 
     File.WriteAllText(Path.Combine(path, "index.html"), indexHtml.ToString());
 
-    Console.WriteLine("index.html created");
+    Console.WriteLine("index.html created!");
     Console.ResetColor();
   }
 
   public static void CreateEslintConfigJs(string path)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating eslint.config.js");
+    Console.WriteLine("Creating eslint.config.js...");
     
     StringBuilder eslintConfigJs = new StringBuilder();
 
@@ -276,14 +318,14 @@ public class RootFileGenerators
 
     File.WriteAllText(Path.Combine(path, "eslint.config.js"), eslintConfigJs.ToString());
 
-    Console.WriteLine("eslint.config.js created");
+    Console.WriteLine("eslint.config.js created!");
     Console.ResetColor();
   }
 
   public static void CreateGitignore(string path)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating .gitignore");
+    Console.WriteLine("Creating .gitignore...");
     
     StringBuilder gitignore = new StringBuilder();
 
@@ -318,7 +360,7 @@ public class RootFileGenerators
 
     File.WriteAllText(Path.Combine(path, ".gitignore"), gitignore.ToString());
 
-    Console.WriteLine(".gitignore created");
+    Console.WriteLine(".gitignore created!");
     Console.ResetColor();
   }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace vitemaker.Generators;
 
@@ -26,7 +27,49 @@ public class PublicFileGenerators
 
     File.WriteAllText(Path.Combine(path, "_redirects"), redirectsContent);
 
-    Console.WriteLine("_redirects created");
+    Console.WriteLine("_redirects created!");
+    Console.ResetColor();
+  }
+
+  public static void CreateRobotsTxt(string path)
+  {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating robots.txt file...");
+    
+    StringBuilder robotsText = new StringBuilder();
+
+    robotsText.AppendLine("User-agent: *");
+    robotsText.AppendLine("Allow: /");
+    robotsText.AppendLine();
+    robotsText.AppendLine("# Sitemap location");
+    robotsText.AppendLine("Sitemap: https://yourdomain.com/sitemap.xml");
+
+    File.WriteAllText(Path.Combine(path, "robots.txt"), robotsText.ToString());
+
+    Console.WriteLine("robots.txt created!");
+    Console.ResetColor();
+  }
+
+  public static void CreateSiteMapXml(string path)
+  {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating sitemap.xml file...");
+    
+    StringBuilder sitemapXml = new StringBuilder();
+    
+    sitemapXml.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    sitemapXml.AppendLine("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
+    sitemapXml.AppendLine("  <url>");
+    sitemapXml.AppendLine("    <loc>https://yourdomain.com</loc>");
+    sitemapXml.AppendLine("    <lastmod>2021-01-01</lastmod>");
+    sitemapXml.AppendLine("    <changefreq>monthly</changefreq>");
+    sitemapXml.AppendLine("    <priority>1.0</priority>");
+    sitemapXml.AppendLine("  </url>");
+    sitemapXml.AppendLine("</urlset>");
+
+    File.WriteAllText(Path.Combine(path, "sitemap.xml"), sitemapXml.ToString());
+
+    Console.WriteLine("sitemap.xml created!");
     Console.ResetColor();
   }
 }

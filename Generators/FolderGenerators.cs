@@ -11,7 +11,7 @@ public class FolderGenerators
     Console.WriteLine("Creating folders...");
     
     CreatePublicFolder(path);
-    CreateSrcFolder(path);
+    CreateSrcFolders(path);
 
     Console.WriteLine("Folders created!");
     Console.ResetColor();
@@ -22,7 +22,7 @@ public class FolderGenerators
     Directory.CreateDirectory(Path.Combine(path, "public"));
   }
 
-  public static void CreateSrcFolder(string path)
+  public static void CreateSrcFolders(string path)
   {
     Directory.CreateDirectory(Path.Combine(path, "src"));
     Directory.CreateDirectory(Path.Combine(path, "src", "assets"));

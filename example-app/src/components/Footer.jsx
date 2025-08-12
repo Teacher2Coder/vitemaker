@@ -12,7 +12,7 @@ const Footer = () => {
               example-app
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-md">
-              It does things
+              It does things!
             </p>
           </div>
 

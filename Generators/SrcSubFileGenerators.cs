@@ -390,7 +390,7 @@ public class SrcSubFileGenerators
   public static void CreateHandleSmoothScrollJs(string path)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating handleSmoothScroll.js");
+    Console.WriteLine("Creating handleSmoothScroll.js...");
     
     StringBuilder handleSmoothScrollJs = new StringBuilder();
     
@@ -412,7 +412,46 @@ public class SrcSubFileGenerators
     
     File.WriteAllText(Path.Combine(path, "handleSmoothScroll.js"), handleSmoothScrollJs.ToString());
 
-    Console.WriteLine("handleSmoothScroll.js created");
+    Console.WriteLine("handleSmoothScroll.js created!");
     Console.ResetColor();
+  }
+  
+  public static void CreateUsePageSeoJs(string path)
+  {
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Creating usePageTitle.js...");
+    
+    StringBuilder usePageTitleJs = new StringBuilder();
+    
+    usePageTitleJs.AppendLine("import { useEffect } from 'react'");
+    usePageTitleJs.AppendLine("import { useLocation } from 'react-router-dom'");
+    usePageTitleJs.AppendLine();
+    usePageTitleJs.AppendLine("export default function usePageSEO(seoData) {");
+    usePageTitleJs.AppendLine("  const location = useLocation()");
+    usePageTitleJs.AppendLine("  useEffect(() => {");
+    usePageTitleJs.AppendLine("    if (seoData.title) {");
+    usePageTitleJs.AppendLine("      document.title = seoData.title");
+    usePageTitleJs.AppendLine("    }");
+    usePageTitleJs.AppendLine("    if (seoData.description) {");
+    usePageTitleJs.AppendLine("      document.querySelector('meta[name=\"description\"]').setAttribute('content', seoData.description)");
+    usePageTitleJs.AppendLine("    }");
+    usePageTitleJs.AppendLine("    if (seoData.ogTitle) {");
+    usePageTitleJs.AppendLine("      document.querySelector('meta[property=\"og:title\"]').setAttribute('content', seoData.ogTitle)");
+    usePageTitleJs.AppendLine("    }");
+    usePageTitleJs.AppendLine("    if (seoData.ogDescription) {");
+    usePageTitleJs.AppendLine("      document.querySelector('meta[property=\"og:description\"]').setAttribute('content', seoData.ogDescription)");
+    usePageTitleJs.AppendLine("    }");
+    usePageTitleJs.AppendLine("    if (seoData.twitterTitle) {");
+    usePageTitleJs.AppendLine("      document.querySelector('meta[name=\"twitter:title\"]').setAttribute('content', seoData.twitterTitle)");
+    usePageTitleJs.AppendLine("    }");
+    usePageTitleJs.AppendLine("    if (seoData.twitterDescription) {");
+    usePageTitleJs.AppendLine("      document.querySelector('meta[name=\"twitter:description\"]').setAttribute('content', seoData.twitterDescription)");
+    usePageTitleJs.AppendLine("    }");
+    usePageTitleJs.AppendLine("  }, [seoData, location.pathname])");
+    usePageTitleJs.AppendLine("}");
+
+    File.WriteAllText(Path.Combine(path, "usePageTitle.js"), usePageTitleJs.ToString());
+
+    Console.WriteLine("usePageTitle.js created!");
   }
 }

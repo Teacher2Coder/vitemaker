@@ -32,7 +32,7 @@ var pathToUtils = $"{pathToSrc}/utils";
 
 FolderGenerators.CreateFolders(pathToProject);
 
-// Create files in project folder
+// Create files in root folder
 RootFileGenerators.CreatePackageJson(pathToProject, inputs);
 RootFileGenerators.CreateViteConfig(pathToProject);
 RootFileGenerators.CreateTailwindConfig(pathToProject);
@@ -44,10 +44,13 @@ RootFileGenerators.CreateGitignore(pathToProject);
 // Create files in public folder
 PublicFileGenerators.CreateLogo(pathToPublic);
 PublicFileGenerators.CreateRedirects(pathToPublic);
+PublicFileGenerators.CreateRobotsTxt(pathToPublic);
+PublicFileGenerators.CreateSiteMapXml(pathToPublic);
 
 // Create files in src folder
 SrcFileGenerators.CreateMainJsx(pathToSrc);
 SrcFileGenerators.CreateAppJsx(pathToSrc);
+SrcFileGenerators.CreateIndexCss(pathToSrc);
 
 //Create files in src subfolders
 SrcSubFileGenerators.CreateNavbarJsx(pathToComponents, inputs);
@@ -57,14 +60,12 @@ SrcSubFileGenerators.CreateErrorJsx(pathToPages);
 SrcSubFileGenerators.CreateAppCss(pathToStyles);
 SrcSubFileGenerators.CreateNavbarCss(pathToStyles);
 SrcSubFileGenerators.CreateHandleSmoothScrollJs(pathToUtils);
+SrcSubFileGenerators.CreateUsePageSeoJs(pathToUtils);
 
 // Run console commands
 Installs.InstallDefaultPackages(pathToProject);
-Console.WriteLine(inputs.PackagesToAdd.Count);
 if (inputs.PackagesToAdd.Count > 0)
-{
   Installs.InstallUserPackages(pathToProject, inputs);
-}
 
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Project created successfully!");

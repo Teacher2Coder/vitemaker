@@ -1,7 +1,7 @@
 # Vite Maker
 
 ## Description
-This package is designed to start up a Vite React App with relative ease. Most of the tools that make React Apps don't have all the setup that I like, so I am just creating my own. This program will complete create a Vite React App with React, Vite, Tailwind, PostCss Axios, Framer-Motion and Eslint allready installed and configured. The user also has the option to add additional packages as desired.
+This package is designed to start up a Vite React App with relative ease. Most of the tools that make React Apps don't have all the setup that I like, so I am just creating my own. This program will complete create a Vite React App with React, Vite, Tailwind CSS, PostCSS Axios, Framer-Motion and Eslint allready installed and configured. The user also has the option to add additional packages as desired.
 
 I could have created this project a litle more simply with a Node.js app, but I have been loving the .NET Framework as of late, so I decided to build it using that system instead!
 
