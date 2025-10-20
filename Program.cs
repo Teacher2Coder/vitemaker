@@ -52,13 +52,14 @@ SrcFileGenerators.CreateMainJsx(pathToSrc);
 SrcFileGenerators.CreateAppJsx(pathToSrc);
 SrcFileGenerators.CreateIndexCss(pathToSrc);
 
-//Create files in src subfolders
+// Create files in styles folder
+SrcFileGenerators.CreateAppCss(pathToStyles);
+
+// Create files in src subfolders
 SrcSubFileGenerators.CreateNavbarJsx(pathToComponents, inputs);
 SrcSubFileGenerators.CreateFooterJsx(pathToComponents, inputs);
 SrcSubFileGenerators.CreateHomeJsx(pathToPages, inputs);
 SrcSubFileGenerators.CreateErrorJsx(pathToPages);
-SrcSubFileGenerators.CreateAppCss(pathToStyles);
-SrcSubFileGenerators.CreateNavbarCss(pathToStyles);
 SrcSubFileGenerators.CreateHandleSmoothScrollJs(pathToUtils);
 SrcSubFileGenerators.CreateUsePageSeoJs(pathToUtils);
 

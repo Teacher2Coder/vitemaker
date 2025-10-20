@@ -80,8 +80,8 @@ public class RootFileGenerators
     
     StringBuilder viteConfig = new StringBuilder();
 
-    viteConfig.AppendLine("import { defineConfig } from 'vite'");
-    viteConfig.AppendLine("import react from '@vitejs/plugin-react'");
+    viteConfig.AppendLine("import { defineConfig } from 'vite';");
+    viteConfig.AppendLine("import react from '@vitejs/plugin-react';");
     viteConfig.AppendLine();
     viteConfig.AppendLine("// https://vitejs.dev/config/");
     viteConfig.AppendLine("export default defineConfig({");
@@ -90,7 +90,6 @@ public class RootFileGenerators
     viteConfig.AppendLine("    port: 3001,");
     viteConfig.AppendLine("  },");
     viteConfig.AppendLine("});");
-
 
     File.WriteAllText(Path.Combine(path, "vite.config.js"), viteConfig.ToString());
 
@@ -174,7 +173,8 @@ public class RootFileGenerators
     tailwindConfig.AppendLine("      },");
     tailwindConfig.AppendLine("    },");
     tailwindConfig.AppendLine("  },");
-    tailwindConfig.AppendLine("} ");
+    tailwindConfig.AppendLine("  plugins: [],");
+    tailwindConfig.AppendLine("};");
     
     File.WriteAllText(Path.Combine(path, "tailwind.config.js"), tailwindConfig.ToString());
   
@@ -232,17 +232,12 @@ public class RootFileGenerators
     indexHtml.AppendLine($"    <meta property=\"og:site_name\" content=\"{inputs.ProjectName}\">");
     indexHtml.AppendLine();
     indexHtml.AppendLine("    <!-- Twitter -->");
-    indexHtml.AppendLine("    <meta property=\"twitter:card\" content=\"summary_large_image\">");
-    indexHtml.AppendLine("    <meta property=\"twitter:url\" content=\"\">");
-    indexHtml.AppendLine($"    <meta property=\"twitter:title\" content=\"{inputs.ProjectName}\">");
-    indexHtml.AppendLine($"    <meta property=\"twitter:description\" content=\"{inputs.ProjectDescription}\">");
-    indexHtml.AppendLine("    <meta property=\"twitter:image\" content=\"\">");
-    indexHtml.AppendLine("    <meta property=\"twitter:image:alt\" content=\"\">");
-    indexHtml.AppendLine("    <meta property=\"twitter:image:width\" content=\"1200\">");
-    indexHtml.AppendLine("    <meta property=\"twitter:image:height\" content=\"630\">");
-    indexHtml.AppendLine("    <meta property=\"twitter:image:type\" content=\"image/png\">");
-    indexHtml.AppendLine("    <meta property=\"twitter:locale\" content=\"en_US\">");
-    indexHtml.AppendLine($"    <meta property=\"twitter:site\" content=\"{inputs.ProjectName}\">");
+    indexHtml.AppendLine("    <meta name=\"twitter:card\" content=\"summary_large_image\">");
+    indexHtml.AppendLine("    <meta name=\"twitter:url\" content=\"\">");
+    indexHtml.AppendLine($"    <meta name=\"twitter:title\" content=\"{inputs.ProjectName}\">");
+    indexHtml.AppendLine($"    <meta name=\"twitter:description\" content=\"{inputs.ProjectDescription}\">");
+    indexHtml.AppendLine("    <meta name=\"twitter:image\" content=\"\">");
+    indexHtml.AppendLine("    <meta name=\"twitter:image:alt\" content=\"\">");
     indexHtml.AppendLine();
     indexHtml.AppendLine("    <!-- Robots -->");
     indexHtml.AppendLine("    <meta name=\"robots\" content=\"index, follow\">");
@@ -291,30 +286,40 @@ public class RootFileGenerators
     
     StringBuilder eslintConfigJs = new StringBuilder();
 
-    eslintConfigJs.AppendLine("module.exports = {");
-    eslintConfigJs.AppendLine("  extends: [");
-    eslintConfigJs.AppendLine("    'eslint:recommended',");
-    eslintConfigJs.AppendLine("    'plugin:react/recommended',");
-    eslintConfigJs.AppendLine("    'plugin:react/jsx-runtime',");
-    eslintConfigJs.AppendLine("    'plugin:react-hooks/recommended',");
-    eslintConfigJs.AppendLine("  ],");
-    eslintConfigJs.AppendLine("  parserOptions: {");
-    eslintConfigJs.AppendLine("    ecmaVersion: 'latest',");
-    eslintConfigJs.AppendLine("    sourceType: 'module',");
+    eslintConfigJs.AppendLine("import js from '@eslint/js';");
+    eslintConfigJs.AppendLine("import globals from 'globals';");
+    eslintConfigJs.AppendLine("import reactHooks from 'eslint-plugin-react-hooks';");
+    eslintConfigJs.AppendLine("import reactRefresh from 'eslint-plugin-react-refresh';");
+    eslintConfigJs.AppendLine();
+    eslintConfigJs.AppendLine("export default [");
+    eslintConfigJs.AppendLine("  {");
+    eslintConfigJs.AppendLine("    ignores: ['dist', 'node_modules'],");
     eslintConfigJs.AppendLine("  },");
-    eslintConfigJs.AppendLine("  settings: {");
-    eslintConfigJs.AppendLine("    react: { version: '18.2' }");
+    eslintConfigJs.AppendLine("  {");
+    eslintConfigJs.AppendLine("    files: ['**/*.{js,jsx}'],");
+    eslintConfigJs.AppendLine("    languageOptions: {");
+    eslintConfigJs.AppendLine("      ecmaVersion: 2020,");
+    eslintConfigJs.AppendLine("      globals: globals.browser,");
+    eslintConfigJs.AppendLine("      parserOptions: {");
+    eslintConfigJs.AppendLine("        ecmaVersion: 'latest',");
+    eslintConfigJs.AppendLine("        ecmaFeatures: { jsx: true },");
+    eslintConfigJs.AppendLine("        sourceType: 'module',");
+    eslintConfigJs.AppendLine("      },");
+    eslintConfigJs.AppendLine("    },");
+    eslintConfigJs.AppendLine("    plugins: {");
+    eslintConfigJs.AppendLine("      'react-hooks': reactHooks,");
+    eslintConfigJs.AppendLine("      'react-refresh': reactRefresh,");
+    eslintConfigJs.AppendLine("    },");
+    eslintConfigJs.AppendLine("    rules: {");
+    eslintConfigJs.AppendLine("      ...js.configs.recommended.rules,");
+    eslintConfigJs.AppendLine("      ...reactHooks.configs.recommended.rules,");
+    eslintConfigJs.AppendLine("      'react-refresh/only-export-components': [");
+    eslintConfigJs.AppendLine("        'warn',");
+    eslintConfigJs.AppendLine("        { allowConstantExport: true },");
+    eslintConfigJs.AppendLine("      ],");
+    eslintConfigJs.AppendLine("    },");
     eslintConfigJs.AppendLine("  },");
-    eslintConfigJs.AppendLine("  plugins: [");
-    eslintConfigJs.AppendLine("    'react',");
-    eslintConfigJs.AppendLine("    'react-hooks',");
-    eslintConfigJs.AppendLine("    'react-hooks',");
-    eslintConfigJs.AppendLine("  ],");
-    eslintConfigJs.AppendLine("  rules: {");
-    eslintConfigJs.AppendLine("    'react-refresh/only-export-components': 'warn',");
-    eslintConfigJs.AppendLine("    'react/prop-types': 'off',");
-    eslintConfigJs.AppendLine("  },");
-    eslintConfigJs.AppendLine("};");
+    eslintConfigJs.AppendLine("];");
 
     File.WriteAllText(Path.Combine(path, "eslint.config.js"), eslintConfigJs.ToString());
 

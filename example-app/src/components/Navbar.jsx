@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import handleSmoothScroll from '../utils/handleSmoothScroll';
+import handleSmoothScroll from '../utils/handleSmoothScroll.js';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +42,7 @@ const Navbar = () => {
           <Link
             to="/"
             className="flex items-center space-x-2 group"
-            onClick={() => handleSmoothScroll()}
+            onClick={handleSmoothScroll}
           >
             <div className="p-2 bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg transform group-hover:scale-105 transition-transform duration-300">
               <img
@@ -67,7 +67,7 @@ const Navbar = () => {
                     ? 'text-primary-600 dark:text-primary-400'
                     : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
                 }`}
-                onClick={() => handleSmoothScroll()}
+                onClick={handleSmoothScroll}
               >
                 {item.label}
                 {location.pathname === item.path && (
@@ -119,7 +119,7 @@ const Navbar = () => {
                           ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400'
                           : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
                       }`}
-                      onClick={() => handleSmoothScroll()}
+                      onClick={handleSmoothScroll}
                     >
                       {item.label}
                     </Link>

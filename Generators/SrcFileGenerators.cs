@@ -51,20 +51,20 @@ public class SrcFileGenerators
     appJsx.AppendLine("  const location = useLocation();");
     appJsx.AppendLine();
     appJsx.AppendLine("  return (");
-    appJsx.AppendLine("    <div className='app'>");
+    appJsx.AppendLine("    <div className=\"app min-h-screen flex flex-col\">");
     appJsx.AppendLine("      <Navbar />");
-    appJsx.AppendLine("      <main className='app pt-20'>");
-    appJsx.AppendLine("        <AnimatePresence mode='wait'>");
+    appJsx.AppendLine("      <main className=\"flex-1 pt-20\">");
+    appJsx.AppendLine("        <AnimatePresence mode=\"wait\">");
     appJsx.AppendLine("          <Routes location={location} key={location.pathname}>");
-    appJsx.AppendLine("            <Route path='/' element={<Home />} />");
-    appJsx.AppendLine("            <Route path='*' element={<Error />} />");
+    appJsx.AppendLine("            <Route path=\"/\" element={<Home />} />");
+    appJsx.AppendLine("            <Route path=\"*\" element={<Error />} />");
     appJsx.AppendLine("          </Routes>");
-    appJsx.AppendLine("      </AnimatePresence>");
+    appJsx.AppendLine("        </AnimatePresence>");
     appJsx.AppendLine("      </main>");
     appJsx.AppendLine("      <Footer />");
     appJsx.AppendLine("    </div>");
     appJsx.AppendLine("  );");
-    appJsx.AppendLine("}");
+    appJsx.AppendLine("};");
     appJsx.AppendLine();
     appJsx.AppendLine("export default App;");
 
@@ -141,11 +141,12 @@ public class SrcFileGenerators
     
     StringBuilder appCss = new StringBuilder();
 
+    appCss.AppendLine("@tailwind base;");
+    appCss.AppendLine("@tailwind components;");
+    appCss.AppendLine("@tailwind utilities;");
+    appCss.AppendLine();
     appCss.AppendLine("#root {");
-    appCss.AppendLine("  max-width: 1280px;");
-    appCss.AppendLine("  margin: 0 auto;");
-    appCss.AppendLine("  padding: 2rem;");
-    appCss.AppendLine("  text-align: center;");
+    appCss.AppendLine("  min-height: 100vh;");
     appCss.AppendLine("}");
 
     File.WriteAllText(Path.Combine(path, "app.css"), appCss.ToString());

@@ -10,19 +10,19 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <div className='app'>
+    <div className="app min-h-screen flex flex-col">
       <Navbar />
-      <main className='app pt-20'>
-        <AnimatePresence mode='wait'>
+      <main className="flex-1 pt-20">
+        <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            <Route path='/' element={<Home />} />
-            <Route path='*' element={<Error />} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Error />} />
           </Routes>
-      </AnimatePresence>
+        </AnimatePresence>
       </main>
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,6 +1,6 @@
-import { Heart } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import handleSmoothScroll from '../utils/handleSmoothScroll'
+import { Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import handleSmoothScroll from '../utils/handleSmoothScroll.js';
 
 const Footer = () => {
   return (
@@ -12,7 +12,7 @@ const Footer = () => {
               example-app
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-md">
-              It does things!
+              It does things.
             </p>
           </div>
 
@@ -22,9 +22,9 @@ const Footer = () => {
             </h4>
             <div className="space-y-2">
               <Link
-                to="/home" 
-                className="block text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300" 
-                onClick={() => handleSmoothScroll()}
+                to="/"
+                className="block text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
+                onClick={handleSmoothScroll}
               >
                 Home
               </Link>
@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer 
+export default Footer;

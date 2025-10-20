@@ -1,20 +1,19 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const Home = () => {
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      staggerChildren: 0.2,
-      delay: 0.3,
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2,
+        delay: 0.3,
+      },
     },
-  }
-};
+  };
 
-  const itemVarients = {
+  const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -23,28 +22,26 @@ const containerVariants = {
     },
   };
 
+
   return (
     <motion.div
+      className="container mx-auto px-4 py-16"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       exit="hidden"
     >
       <motion.h1
-        variants={itemVarients}
-        initial="hidden"
-        animate="visible"
-        className="text-4xl font-bold gradient-text text-center"
+        variants={itemVariants}
+        className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text text-center mb-8"
       >
-        Welcome to the Home Page for example-app
+        Welcome to example-app
       </motion.h1>
       <motion.img
-        variants={itemVarients}
-        initial="hidden"
-        animate="visible"
+        variants={itemVariants}
         src="/logo.svg"
         alt="example-app"
-        className="w-1/2 mx-auto"
+        className="w-full max-w-md mx-auto"
       />
     </motion.div>
   );

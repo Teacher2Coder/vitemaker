@@ -18,7 +18,7 @@ public class SrcSubFileGenerators
     navbarJsx.AppendLine("import { Link, useLocation } from 'react-router-dom';");
     navbarJsx.AppendLine("import { motion, AnimatePresence } from 'framer-motion';");
     navbarJsx.AppendLine("import { Menu, X } from 'lucide-react';");
-    navbarJsx.AppendLine("import handleSmoothScroll from '../utils/handleSmoothScroll';");
+    navbarJsx.AppendLine("import handleSmoothScroll from '../utils/handleSmoothScroll.js';");
     navbarJsx.AppendLine();
     navbarJsx.AppendLine("const Navbar = () => {");
     navbarJsx.AppendLine("  const [isOpen, setIsOpen] = useState(false);");
@@ -58,11 +58,11 @@ public class SrcSubFileGenerators
     navbarJsx.AppendLine("          <Link");
     navbarJsx.AppendLine("            to=\"/\"");
     navbarJsx.AppendLine("            className=\"flex items-center space-x-2 group\"");
-    navbarJsx.AppendLine("            onClick={() => handleSmoothScroll()}");
+    navbarJsx.AppendLine("            onClick={handleSmoothScroll}");
     navbarJsx.AppendLine("          >");
     navbarJsx.AppendLine("            <div className=\"p-2 bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg transform group-hover:scale-105 transition-transform duration-300\">");
     navbarJsx.AppendLine("              <img");
-    navbarJsx.AppendLine($"                src=\"/logo.svg\"");
+    navbarJsx.AppendLine("                src=\"/logo.svg\"");
     navbarJsx.AppendLine($"                alt=\"{inputs.ProjectName}\"");
     navbarJsx.AppendLine("                className=\"w-6 h-6\"");
     navbarJsx.AppendLine("              />");
@@ -83,7 +83,7 @@ public class SrcSubFileGenerators
     navbarJsx.AppendLine("                    ? 'text-primary-600 dark:text-primary-400'");
     navbarJsx.AppendLine("                    : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'");
     navbarJsx.AppendLine("                }`}");
-    navbarJsx.AppendLine("                onClick={() => handleSmoothScroll()}");
+    navbarJsx.AppendLine("                onClick={handleSmoothScroll}");
     navbarJsx.AppendLine("              >");
     navbarJsx.AppendLine("                {item.label}");
     navbarJsx.AppendLine("                {location.pathname === item.path && (");
@@ -135,7 +135,7 @@ public class SrcSubFileGenerators
     navbarJsx.AppendLine("                          ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400'");
     navbarJsx.AppendLine("                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'");
     navbarJsx.AppendLine("                      }`}");
-    navbarJsx.AppendLine("                      onClick={() => handleSmoothScroll()}");
+    navbarJsx.AppendLine("                      onClick={handleSmoothScroll}");
     navbarJsx.AppendLine("                    >");
     navbarJsx.AppendLine("                      {item.label}");
     navbarJsx.AppendLine("                    </Link>");
@@ -165,9 +165,9 @@ public class SrcSubFileGenerators
     
     StringBuilder footerJsx = new StringBuilder();
     
-    footerJsx.AppendLine("import { Heart } from 'lucide-react'");
-    footerJsx.AppendLine("import { Link } from 'react-router-dom'");
-    footerJsx.AppendLine("import handleSmoothScroll from '../utils/handleSmoothScroll'");
+    footerJsx.AppendLine("import { Heart } from 'lucide-react';");
+    footerJsx.AppendLine("import { Link } from 'react-router-dom';");
+    footerJsx.AppendLine("import handleSmoothScroll from '../utils/handleSmoothScroll.js';");
     footerJsx.AppendLine();
     footerJsx.AppendLine("const Footer = () => {");
     footerJsx.AppendLine("  return (");
@@ -189,9 +189,9 @@ public class SrcSubFileGenerators
     footerJsx.AppendLine("            </h4>");
     footerJsx.AppendLine("            <div className=\"space-y-2\">");
     footerJsx.AppendLine("              <Link");
-    footerJsx.AppendLine("                to=\"/home\" ");
-    footerJsx.AppendLine("                className=\"block text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300\" ");
-    footerJsx.AppendLine("                onClick={() => handleSmoothScroll()}");
+    footerJsx.AppendLine("                to=\"/\"");
+    footerJsx.AppendLine("                className=\"block text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300\"");
+    footerJsx.AppendLine("                onClick={handleSmoothScroll}");
     footerJsx.AppendLine("              >");
     footerJsx.AppendLine("                Home");
     footerJsx.AppendLine("              </Link>");
@@ -213,10 +213,10 @@ public class SrcSubFileGenerators
     footerJsx.AppendLine("        </div>");
     footerJsx.AppendLine("      </div>");
     footerJsx.AppendLine("    </footer>");
-    footerJsx.AppendLine("  )");
-    footerJsx.AppendLine("}");
+    footerJsx.AppendLine("  );");
+    footerJsx.AppendLine("};");
     footerJsx.AppendLine();
-    footerJsx.AppendLine("export default Footer ");
+    footerJsx.AppendLine("export default Footer;");
     
     File.WriteAllText(Path.Combine(path, "Footer.jsx"), footerJsx.ToString());
 
@@ -231,23 +231,22 @@ public class SrcSubFileGenerators
     
     StringBuilder homeJsx = new StringBuilder();
 
-    homeJsx.AppendLine("import { motion } from 'framer-motion'");
+    homeJsx.AppendLine("import { motion } from 'framer-motion';");
     homeJsx.AppendLine();
     homeJsx.AppendLine("const Home = () => {");
-    homeJsx.AppendLine();
-    homeJsx.AppendLine("const containerVariants = {");
-    homeJsx.AppendLine("  hidden: { opacity: 0 },");
-    homeJsx.AppendLine("  visible: {");
-    homeJsx.AppendLine("    opacity: 1,");
-    homeJsx.AppendLine("    transition: {");
-    homeJsx.AppendLine("      duration: 0.6,");
-    homeJsx.AppendLine("      staggerChildren: 0.2,");
-    homeJsx.AppendLine("      delay: 0.3,");
+    homeJsx.AppendLine("  const containerVariants = {");
+    homeJsx.AppendLine("    hidden: { opacity: 0 },");
+    homeJsx.AppendLine("    visible: {");
+    homeJsx.AppendLine("      opacity: 1,");
+    homeJsx.AppendLine("      transition: {");
+    homeJsx.AppendLine("        duration: 0.6,");
+    homeJsx.AppendLine("        staggerChildren: 0.2,");
+    homeJsx.AppendLine("        delay: 0.3,");
+    homeJsx.AppendLine("      },");
     homeJsx.AppendLine("    },");
-    homeJsx.AppendLine("  }");
-    homeJsx.AppendLine("};");
+    homeJsx.AppendLine("  };");
     homeJsx.AppendLine();
-    homeJsx.AppendLine("  const itemVarients = {");
+    homeJsx.AppendLine("  const itemVariants = {");
     homeJsx.AppendLine("    hidden: { opacity: 0, y: 20 },");
     homeJsx.AppendLine("    visible: {");
     homeJsx.AppendLine("      opacity: 1,");
@@ -256,28 +255,26 @@ public class SrcSubFileGenerators
     homeJsx.AppendLine("    },");
     homeJsx.AppendLine("  };");
     homeJsx.AppendLine();
+    homeJsx.AppendLine();
     homeJsx.AppendLine("  return (");
     homeJsx.AppendLine("    <motion.div");
+    homeJsx.AppendLine("      className=\"container mx-auto px-4 py-16\"");
     homeJsx.AppendLine("      variants={containerVariants}");
     homeJsx.AppendLine("      initial=\"hidden\"");
     homeJsx.AppendLine("      animate=\"visible\"");
     homeJsx.AppendLine("      exit=\"hidden\"");
     homeJsx.AppendLine("    >");
     homeJsx.AppendLine("      <motion.h1");
-    homeJsx.AppendLine("        variants={itemVarients}");
-    homeJsx.AppendLine("        initial=\"hidden\"");
-    homeJsx.AppendLine("        animate=\"visible\"");
-    homeJsx.AppendLine("        className=\"text-4xl font-bold gradient-text text-center\"");
+    homeJsx.AppendLine("        variants={itemVariants}");
+    homeJsx.AppendLine("        className=\"text-4xl md:text-5xl lg:text-6xl font-bold gradient-text text-center mb-8\"");
     homeJsx.AppendLine("      >");
-    homeJsx.AppendLine($"        Welcome to the Home Page for {inputs.ProjectName}");
+    homeJsx.AppendLine($"        Welcome to {inputs.ProjectName}");
     homeJsx.AppendLine("      </motion.h1>");
     homeJsx.AppendLine("      <motion.img");
-    homeJsx.AppendLine("        variants={itemVarients}");
-    homeJsx.AppendLine("        initial=\"hidden\"");
-    homeJsx.AppendLine("        animate=\"visible\"");
+    homeJsx.AppendLine("        variants={itemVariants}");
     homeJsx.AppendLine("        src=\"/logo.svg\"");
     homeJsx.AppendLine($"        alt=\"{inputs.ProjectName}\"");
-    homeJsx.AppendLine("        className=\"w-1/2 mx-auto\"");
+    homeJsx.AppendLine("        className=\"w-full max-w-md mx-auto\"");
     homeJsx.AppendLine("      />");
     homeJsx.AppendLine("    </motion.div>");
     homeJsx.AppendLine("  );");
@@ -298,7 +295,9 @@ public class SrcSubFileGenerators
     
     StringBuilder errorJsx = new StringBuilder();
 
-    errorJsx.AppendLine("import { motion } from 'framer-motion'");
+    errorJsx.AppendLine("import { motion } from 'framer-motion';");
+    errorJsx.AppendLine("import { Link } from 'react-router-dom';");
+    errorJsx.AppendLine("import { Home } from 'lucide-react';");
     errorJsx.AppendLine();
     errorJsx.AppendLine("const Error = () => {");
     errorJsx.AppendLine("  const containerVariants = {");
@@ -310,10 +309,10 @@ public class SrcSubFileGenerators
     errorJsx.AppendLine("        staggerChildren: 0.2,");
     errorJsx.AppendLine("        delay: 0.3,");
     errorJsx.AppendLine("      },");
-    errorJsx.AppendLine("    }");
+    errorJsx.AppendLine("    },");
     errorJsx.AppendLine("  };");
     errorJsx.AppendLine();
-    errorJsx.AppendLine("  const itemVarients = {");
+    errorJsx.AppendLine("  const itemVariants = {");
     errorJsx.AppendLine("    hidden: { opacity: 0, y: 20 },");
     errorJsx.AppendLine("    visible: {");
     errorJsx.AppendLine("      opacity: 1,");
@@ -324,19 +323,33 @@ public class SrcSubFileGenerators
     errorJsx.AppendLine();
     errorJsx.AppendLine("  return (");
     errorJsx.AppendLine("    <motion.div");
+    errorJsx.AppendLine("      className=\"container mx-auto px-4 py-16 text-center\"");
     errorJsx.AppendLine("      variants={containerVariants}");
     errorJsx.AppendLine("      initial=\"hidden\"");
     errorJsx.AppendLine("      animate=\"visible\"");
     errorJsx.AppendLine("      exit=\"hidden\"");
     errorJsx.AppendLine("    >");
     errorJsx.AppendLine("      <motion.h1");
-    errorJsx.AppendLine("        variants={itemVarients}");
-    errorJsx.AppendLine("        initial=\"hidden\"");
-    errorJsx.AppendLine("        animate=\"visible\"");
-    errorJsx.AppendLine("        className=\"text-4xl font-bold gradient-text text-center\"");
+    errorJsx.AppendLine("        variants={itemVariants}");
+    errorJsx.AppendLine("        className=\"text-6xl md:text-8xl font-bold gradient-text mb-4\"");
+    errorJsx.AppendLine("      >");
+    errorJsx.AppendLine("        404");
+    errorJsx.AppendLine("      </motion.h1>");
+    errorJsx.AppendLine("      <motion.p");
+    errorJsx.AppendLine("        variants={itemVariants}");
+    errorJsx.AppendLine("        className=\"text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8\"");
     errorJsx.AppendLine("      >");
     errorJsx.AppendLine("        Page Not Found");
-    errorJsx.AppendLine("      </motion.h1>");
+    errorJsx.AppendLine("      </motion.p>");
+    errorJsx.AppendLine("      <motion.div variants={itemVariants}>");
+    errorJsx.AppendLine("        <Link");
+    errorJsx.AppendLine("          to=\"/\"");
+    errorJsx.AppendLine("          className=\"inline-flex items-center gap-2 btn-primary\"");
+    errorJsx.AppendLine("        >");
+    errorJsx.AppendLine("          <Home className=\"w-5 h-5\" />");
+    errorJsx.AppendLine("          Back to Home");
+    errorJsx.AppendLine("        </Link>");
+    errorJsx.AppendLine("      </motion.div>");
     errorJsx.AppendLine("    </motion.div>");
     errorJsx.AppendLine("  );");
     errorJsx.AppendLine("};");
@@ -349,44 +362,6 @@ public class SrcSubFileGenerators
     Console.ResetColor();
   }
 
-  public static void CreateAppCss(string path)
-  {
-    Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating app.css");
-    
-    StringBuilder appCss = new StringBuilder();
-
-    appCss.AppendLine("@tailwind base;");
-    appCss.AppendLine("@tailwind components;");
-    appCss.AppendLine("@tailwind utilities;");
-    appCss.AppendLine();
-    appCss.AppendLine("#root {");
-    appCss.AppendLine("  min-height: 100vh;");
-    appCss.AppendLine("}");
-
-    File.WriteAllText(Path.Combine(path, "app.css"), appCss.ToString());
-
-    Console.WriteLine("app.css created");
-    Console.ResetColor();
-  }
-
-  public static void CreateNavbarCss(string path)
-  {
-    Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("Creating Navbar.css");
-    
-    StringBuilder navbarCss = new StringBuilder();
-
-    navbarCss.AppendLine(".mobile-menu-item:hover {");
-    navbarCss.AppendLine("  transform: translateX(4px);");
-    navbarCss.AppendLine("}");
-
-    File.WriteAllText(Path.Combine(path, "Navbar.css"), navbarCss.ToString());
-
-    Console.WriteLine("Navbar.css created");
-    Console.ResetColor();
-  }
-  
   public static void CreateHandleSmoothScrollJs(string path)
   {
     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -394,21 +369,17 @@ public class SrcSubFileGenerators
     
     StringBuilder handleSmoothScrollJs = new StringBuilder();
     
-    handleSmoothScrollJs.AppendLine("export default function handleSmoothScroll() {");
+    handleSmoothScrollJs.AppendLine("const handleSmoothScroll = () => {");
     handleSmoothScrollJs.AppendLine("  setTimeout(() => {");
-    handleSmoothScrollJs.AppendLine("    if (window.scrollTo) {");
-    handleSmoothScrollJs.AppendLine("      window.scrollTo({");
-    handleSmoothScrollJs.AppendLine("        top: 0,");
-    handleSmoothScrollJs.AppendLine("        left: 0,");
-    handleSmoothScrollJs.AppendLine("        behavior: 'smooth',");
-    handleSmoothScrollJs.AppendLine("      });");
-    handleSmoothScrollJs.AppendLine("    } else {");
-    handleSmoothScrollJs.AppendLine("      window.scrollTo(0, 0);");
-    handleSmoothScrollJs.AppendLine("    }");
-    handleSmoothScrollJs.AppendLine("    document.documentElement.scrollTop = 0;");
-    handleSmoothScrollJs.AppendLine("    document.body.scrollTop = 0;");
+    handleSmoothScrollJs.AppendLine("    window.scrollTo({");
+    handleSmoothScrollJs.AppendLine("      top: 0,");
+    handleSmoothScrollJs.AppendLine("      left: 0,");
+    handleSmoothScrollJs.AppendLine("      behavior: 'smooth',");
+    handleSmoothScrollJs.AppendLine("    });");
     handleSmoothScrollJs.AppendLine("  }, 100);");
-    handleSmoothScrollJs.AppendLine("}");
+    handleSmoothScrollJs.AppendLine("};");
+    handleSmoothScrollJs.AppendLine();
+    handleSmoothScrollJs.AppendLine("export default handleSmoothScroll;");
     
     File.WriteAllText(Path.Combine(path, "handleSmoothScroll.js"), handleSmoothScrollJs.ToString());
 
@@ -423,35 +394,35 @@ public class SrcSubFileGenerators
     
     StringBuilder usePageTitleJs = new StringBuilder();
     
-    usePageTitleJs.AppendLine("import { useEffect } from 'react'");
-    usePageTitleJs.AppendLine("import { useLocation } from 'react-router-dom'");
+    usePageTitleJs.AppendLine("import { useEffect } from 'react';");
+    usePageTitleJs.AppendLine("import { useLocation } from 'react-router-dom';");
     usePageTitleJs.AppendLine();
     usePageTitleJs.AppendLine("export default function usePageSEO(seoData) {");
-    usePageTitleJs.AppendLine("  const location = useLocation()");
+    usePageTitleJs.AppendLine("  const location = useLocation();");
+    usePageTitleJs.AppendLine();
     usePageTitleJs.AppendLine("  useEffect(() => {");
     usePageTitleJs.AppendLine("    if (seoData.title) {");
-    usePageTitleJs.AppendLine("      document.title = seoData.title");
+    usePageTitleJs.AppendLine("      document.title = seoData.title;");
     usePageTitleJs.AppendLine("    }");
-    usePageTitleJs.AppendLine("    if (seoData.description) {");
-    usePageTitleJs.AppendLine("      document.querySelector('meta[name=\"description\"]').setAttribute('content', seoData.description)");
-    usePageTitleJs.AppendLine("    }");
-    usePageTitleJs.AppendLine("    if (seoData.ogTitle) {");
-    usePageTitleJs.AppendLine("      document.querySelector('meta[property=\"og:title\"]').setAttribute('content', seoData.ogTitle)");
-    usePageTitleJs.AppendLine("    }");
-    usePageTitleJs.AppendLine("    if (seoData.ogDescription) {");
-    usePageTitleJs.AppendLine("      document.querySelector('meta[property=\"og:description\"]').setAttribute('content', seoData.ogDescription)");
-    usePageTitleJs.AppendLine("    }");
-    usePageTitleJs.AppendLine("    if (seoData.twitterTitle) {");
-    usePageTitleJs.AppendLine("      document.querySelector('meta[name=\"twitter:title\"]').setAttribute('content', seoData.twitterTitle)");
-    usePageTitleJs.AppendLine("    }");
-    usePageTitleJs.AppendLine("    if (seoData.twitterDescription) {");
-    usePageTitleJs.AppendLine("      document.querySelector('meta[name=\"twitter:description\"]').setAttribute('content', seoData.twitterDescription)");
-    usePageTitleJs.AppendLine("    }");
-    usePageTitleJs.AppendLine("  }, [seoData, location.pathname])");
+    usePageTitleJs.AppendLine();
+    usePageTitleJs.AppendLine("    const updateMeta = (selector, attribute, value) => {");
+    usePageTitleJs.AppendLine("      const element = document.querySelector(selector);");
+    usePageTitleJs.AppendLine("      if (element && value) {");
+    usePageTitleJs.AppendLine("        element.setAttribute(attribute, value);");
+    usePageTitleJs.AppendLine("      }");
+    usePageTitleJs.AppendLine("    };");
+    usePageTitleJs.AppendLine();
+    usePageTitleJs.AppendLine("    updateMeta('meta[name=\"description\"]', 'content', seoData.description);");
+    usePageTitleJs.AppendLine("    updateMeta('meta[property=\"og:title\"]', 'content', seoData.ogTitle);");
+    usePageTitleJs.AppendLine("    updateMeta('meta[property=\"og:description\"]', 'content', seoData.ogDescription);");
+    usePageTitleJs.AppendLine("    updateMeta('meta[name=\"twitter:title\"]', 'content', seoData.twitterTitle);");
+    usePageTitleJs.AppendLine("    updateMeta('meta[name=\"twitter:description\"]', 'content', seoData.twitterDescription);");
+    usePageTitleJs.AppendLine("  }, [seoData, location.pathname]);");
     usePageTitleJs.AppendLine("}");
 
     File.WriteAllText(Path.Combine(path, "usePageTitle.js"), usePageTitleJs.ToString());
 
     Console.WriteLine("usePageTitle.js created!");
+    Console.ResetColor();
   }
 }
